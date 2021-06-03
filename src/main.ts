@@ -5,7 +5,9 @@ import store from "./store";
 import router from "./router";
 import axios from "./common/axios";
 import apiModules from "./api/index";
+import {message} from "ant-design-vue";
 
+import "ant-design-vue/dist/antd.css"
 import "./style.scss"
 
 const app = createApp(App)
@@ -14,8 +16,8 @@ app.use(store)
 app.use(router)
 app.use(axios);
 app.use(apiModules);
-import VRipple from "./directives/ripple/ripple";
-app.directive('ripple',VRipple);
 
+app.provide("$message",message);
 
 app.mount('#app')
+
