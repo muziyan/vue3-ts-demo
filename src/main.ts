@@ -6,8 +6,9 @@ import router from "./router";
 import axios from "./common/axios";
 import apiModules from "./api/index";
 
-const app = createApp(App)
+import "./style.scss"
 
+const app = createApp(App)
 
 app.use(store)
 app.use(router)
