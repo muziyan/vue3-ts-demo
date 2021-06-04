@@ -1,12 +1,16 @@
 <template>
-  <router-view :key="path"></router-view>
-  <div style="width: 500px;height: 300px;background-color: #eee" v-ripple>ripple</div>
+  <!-- <router-view :key="path"></router-view> -->
+  <!-- <div style="width: 500px;height: 300px;background-color: #eee" v-ripple>ripple</div> -->
+  <Vmodel 
+    v-model:value="VModelValue"
+  />
 </template>
 
 <script lang="ts" setup>
 
 // get current route path
 import getCurrentRoute from "./utils/currentRoutePath";   
+import Vmodel from "./components/VModel/index.vue"
 const {path} = getCurrentRoute();
 import {useStore} from "vuex";
 import {ref, computed, onMounted,} from "vue";
@@ -27,6 +31,8 @@ const end:MaybeRef<number> = ref(50);
 const userInfo:MaybeRef<object> = computed(()=> store.state["user/userInfo"]);
 const isLogin:MaybeRef<boolean> = computed(() => store.state["user/isLogin"])
 
+
+const VModelValue = ref("v-model")
 
 </script>
 
