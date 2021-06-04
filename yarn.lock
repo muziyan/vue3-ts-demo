@@ -373,17 +373,6 @@
     estree-walker "^2.0.1"
     source-map "^0.6.1"
 
-"@vue/compiler-core@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/compiler-core/-/compiler-core-3.1.0-beta.7.tgz#a72d3298193b50616be3957d6d9c8573d81367be"
-  integrity sha512-P1QQdK4lKuySGEOoLu6vhajMKVguLyR7Oc5Rqio0JPRKpdBNO6CWrD52S+kkkAssbE+rilr0Rf1ar58SqWS01Q==
-  dependencies:
-    "@babel/parser" "^7.12.0"
-    "@babel/types" "^7.12.0"
-    "@vue/shared" "3.1.0-beta.7"
-    estree-walker "^2.0.1"
-    source-map "^0.6.1"
-
 "@vue/compiler-dom@3.0.11":
   version "3.0.11"
   resolved "https://registry.nlark.com/@vue/compiler-dom/download/@vue/compiler-dom-3.0.11.tgz#b15fc1c909371fd671746020ba55b5dab4a730ee"
@@ -391,14 +380,6 @@
   dependencies:
     "@vue/compiler-core" "3.0.11"
     "@vue/shared" "3.0.11"
-
-"@vue/compiler-dom@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/compiler-dom/-/compiler-dom-3.1.0-beta.7.tgz#4daf45d013a036b560f702db1ae92942851c1810"
-  integrity sha512-Nkrntjpm2+MPWJuFQmzakwoqSdZAG+CzJt/4ZQQoR+6Q/3EVHr06vnTa8PgS12mTVU3ewjqz37NM2dDG/xCX9Q==
-  dependencies:
-    "@vue/compiler-core" "3.1.0-beta.7"
-    "@vue/shared" "3.1.0-beta.7"
 
 "@vue/compiler-sfc@^3.0.5":
   version "3.0.11"
@@ -442,13 +423,6 @@
   dependencies:
     "@vue/shared" "3.0.11"
 
-"@vue/reactivity@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/reactivity/-/reactivity-3.1.0-beta.7.tgz#bc270dd1373d0ad812b30af0aac8df6e739218c0"
-  integrity sha512-EEz7dCKmvBpeH6yIgwmNb8oooOK5TBkZppBXL59NpdYTdc/TawcVC6/V85X+mu2XdEP5WELxsdD+JWY0V2bFQQ==
-  dependencies:
-    "@vue/shared" "3.1.0-beta.7"
-
 "@vue/runtime-core@3.0.11":
   version "3.0.11"
   resolved "http://package.31huiyi.com/repository/npm-group/@vue/runtime-core/-/runtime-core-3.0.11.tgz#c52dfc6acf3215493623552c1c2919080c562e44"
@@ -456,14 +430,6 @@
   dependencies:
     "@vue/reactivity" "3.0.11"
     "@vue/shared" "3.0.11"
-
-"@vue/runtime-core@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/runtime-core/-/runtime-core-3.1.0-beta.7.tgz#d71de400a5cf5638a9625dfea4c3d4f923db5ead"
-  integrity sha512-dABm/J5ajZJ5YN20+L/m9IiJplrIrEOJ5y98hDKXXuxUZfRpXNnumlAllma3r2cVYAwR9XSQEjJEiMZbcsaY1A==
-  dependencies:
-    "@vue/reactivity" "3.1.0-beta.7"
-    "@vue/shared" "3.1.0-beta.7"
 
 "@vue/runtime-dom@3.0.11":
   version "3.0.11"
@@ -474,24 +440,10 @@
     "@vue/shared" "3.0.11"
     csstype "^2.6.8"
 
-"@vue/runtime-dom@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/runtime-dom/-/runtime-dom-3.1.0-beta.7.tgz#27475a29e3e0bff35480a933b51e8de2ac20e7f2"
-  integrity sha512-r9ZdmMjHxmv1O4wlH8JQnfjpnEbBQyLh5dXKRrzsDAS4pvGd9DIwOfdxDbyM501+fNRktAv13fN0K7AWgZ1Kdw==
-  dependencies:
-    "@vue/runtime-core" "3.1.0-beta.7"
-    "@vue/shared" "3.1.0-beta.7"
-    csstype "^2.6.8"
-
 "@vue/shared@3.0.11":
   version "3.0.11"
   resolved "https://registry.nlark.com/@vue/shared/download/@vue/shared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
   integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
-
-"@vue/shared@3.1.0-beta.7":
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/@vue/shared/-/shared-3.1.0-beta.7.tgz#e88f37db4c68448258c480f7f1d619195209cbb3"
-  integrity sha512-FoEjKGCbDDte7Bmevakf0zZlFuDBGJKUHGK4rJGaVBIe5jtCSzrwenC1Wt52BqGveux3RUh9uBWpsSDAprBy2Q==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -1374,7 +1326,7 @@ vue-types@^3.0.0:
   dependencies:
     is-plain-object "3.0.1"
 
-vue@^3.0.0:
+vue@^3.0.0, vue@^3.1.0:
   version "3.0.11"
   resolved "http://package.31huiyi.com/repository/npm-group/vue/-/vue-3.0.11.tgz#c82f9594cbf4dcc869241d4c8dd3e08d9a8f4b5f"
   integrity sha512-3/eUi4InQz8MPzruHYSTQPxtM3LdZ1/S/BvaU021zBnZi0laRUyH6pfuE4wtUeLvI8wmUNwj5wrZFvbHUXL9dw==
@@ -1382,15 +1334,6 @@ vue@^3.0.0:
     "@vue/compiler-dom" "3.0.11"
     "@vue/runtime-dom" "3.0.11"
     "@vue/shared" "3.0.11"
-
-vue@^3.1.0:
-  version "3.1.0-beta.7"
-  resolved "http://package.31huiyi.com/repository/npm-group/vue/-/vue-3.1.0-beta.7.tgz#a6bef8da8dd267fdb26f4247dc0f2320a8eee61b"
-  integrity sha512-BNyAeCK/Kd+LB9r+Ukg9trrz4MKLqWhNNYUKgRPcSgT0WMNAdXRzAxj2ZTRwTdK1INKbesPvO1HMSwIN2vNzww==
-  dependencies:
-    "@vue/compiler-dom" "3.1.0-beta.7"
-    "@vue/runtime-dom" "3.1.0-beta.7"
-    "@vue/shared" "3.1.0-beta.7"
 
 vuex@^4.0.1:
   version "4.0.1"

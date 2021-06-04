@@ -8,10 +8,12 @@
       </div>
 
       <AsyncForm 
-        custom-class="login-form"
-        :list="list"
-        :is-cancel-btn="true"      
-        @on-canfirm="handleSubmit"
+        :custom-class="data.customClass"
+        :form-attr-data="data.formAttrData"
+        :list="data.list"
+        :confirm="data.confirm"
+        :cancel="data.cancel"
+        @on-confirm="handleSubmit"
         @on-cancel="handleCancel"
       />
 
@@ -21,7 +23,7 @@
 </template>
 
 <script setup lang='ts'>
-import { computed, inject, reactive } from "@vue/runtime-core";
+import { computed, inject } from "@vue/runtime-core";
 import AsyncForm from "../../components/AsyncForm/index.vue";
 
 import useTitle from "../../utils/useTitle";
@@ -32,28 +34,53 @@ const message : MessageApi | undefined= inject("$message")
 // change site title 
 useTitle(computed(()=> "登录中心"));
 
+import { reactive } from "@vue/reactivity"
+import type {AsyncFormPropsInterface} from "../../components/AsyncForm/data"
 
-const list = reactive([
-  {
-    label:"账户",
-    type:"text",
-    name:"account",
-    placeholder:"请输入账号"
+
+const data:AsyncFormPropsInterface = reactive({
+  customClass:"login-form",
+  formAttrData:{
+    wrapperCol:{
+      span:24
+    }
   },
-  {
-    label:"密码",
-    type:"password",
-    name:"password",
-    placeholder:"请输入密码"
+  list:[
+    {
+      label:"账户",
+      name:"account",
+      inputType:"text",
+      inputAttrType:"text",
+      placeholder:"请输入账号",
+      size:""
+    },
+    {
+      label:"密码",
+      name:"password",
+      inputType:"text",
+      inputAttrType:"password",
+      placeholder:"请输入密码"
+    }
+  ],
+  confirm:{
+    text:"登录",
+    type:"primary",
+    block:true
+  },
+  cancel:{
+    text:"重置",
+    show:true,
+    type:"danger",
+    block:true
   }
-])
-
-const modal = reactive({
-  account:""
 })
 
-const handleSubmit = async (modal)=>{
-  console.log(modal)
+
+import {useRouter} from "vue-router"
+const router = useRouter();
+const handleSubmit = async (modal:object)=>{
+  message?.success("登录成功!");
+  router.push({name:"home"})
 }
 
 const handleCancel = ()=>{

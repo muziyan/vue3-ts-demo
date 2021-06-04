@@ -15,18 +15,17 @@
     border-radius: 20px;
     background-color: #fff;
     text-align: center;
-    @include flex(column,space-between);
+    @include flex(column,space-evenly);
   }
 
   &__title{
     color:#333;
     font-size: 28px;
     font-weight: 500;
-    margin-top: 60px;
   }
 
 
   &-form{
-    padding-top: 30px;
+    min-width: 400px;
   }
 }

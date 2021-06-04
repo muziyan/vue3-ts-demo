@@ -1,64 +1,91 @@
 <template>
-  <Form :class="props?.customClass">
+  <Form 
+    :class="customClass"
+    :="formAttrData"
+  >
     <Item 
-      v-for="item in props.list"
-      :key="item.label"
-      :label="item.label"
+      v-for="item in list"
+      :key="item?.label"
+      :label="item?.label"
     >
+
       <Input
           v-model:value="modal[item?.name]"
-          :type="item.type"
+          :type="item?.inputAttrType"
           :placeholder="item?.placeholder || ''" 
-        />
-
+        />  
     </Item>
 
     <Item>
-      <Button @click="confirm">{{ props.confirmBtnText }}</Button>
-      <Button @click="cancel" v-show="props.isCancelBtn">{{ props.cancelBtnText }}</Button>
+      <async-input
+        v-model="demo"
+        @on-blue="handleDemo"
+      />
+    </Item>  
+
+    <Item>
+      <Button 
+        @click="handleConfirm"
+        :="buttonAttr(confirm)"
+      >
+        {{ confirm?.text }}
+      </Button>
+      <Button 
+        v-show="cancel?.show"
+        @click="handleCancel" 
+        :="buttonAttr(cancel)"
+      >
+        {{ cancel?.text }}
+    </Button>
     </Item>  
   </Form>   
 </template>
+
 
 <script setup lang='ts'>
 // components 
 import {Form,Input,Button} from "ant-design-vue"
 const {Item} = Form;
+import asyncInput from "./input";
 
+import { defineProps ,defineEmit,reactive, ref} from "@vue/runtime-core";
+import {AsyncFormProp} from "./data"
+import type {ModalInterface,ListItemInterface,ButtonType} from "./data"
 
-type listType = "text" | "password" | "number" | "radio" | "select" | "time" | "upload" 
+const props = defineProps({...AsyncFormProp});
 
-interface PropsInterface {
-  customClass?:string,
-  list:Array<ListItemInterface>,
-  comfirm:Object,
-  cancel:Object
-}
-
-interface ListItemInterface {
-  label?:string,
-  name:string,
-  type:listType,
-  placeholder?:string
-}
-
-import { defineProps ,defineEmit,reactive} from "@vue/runtime-core";
-// props 
-const props = defineProps<PropsInterface>()
-
-const modal = reactive({});
-props.list.forEach((item):void => {
+let modal:ModalInterface = reactive({});
+props?.list?.forEach( (item:ListItemInterface) => {
     modal[item?.name] = null;
 })
 
-// emit
-const emit = defineEmit(['on-canfirm','on-cancel']);
-const confirm = ()=>{
-  emit("on-canfirm",modal)
+const buttonAttr = (obj:object)=>{
+  if(!obj || !Object.keys(obj).length) return {};
+  let arr = ['show','text'];
+  let newObj:object = {}
+  Object.keys(obj)?.filter(key => {
+    if(!arr.includes(key)) return key;
+  }).forEach((key:string) => {
+      newObj[key] = obj[key]
+  })
+  return {
+    ...newObj
+  }
 }
-const cancel = () => {
+
+const demo = ref("")
+
+const handleDemo=(val) => {
+  console.log(val);
+}
+
+// emit
+const emit = defineEmit(['on-confirm','on-cancel']);
+const handleConfirm = ()=>{
+  emit("on-confirm",modal)
+}
+const handleCancel = () => {
+  modal = {};
   emit("on-cancel")
 }
-
-
 </script>
