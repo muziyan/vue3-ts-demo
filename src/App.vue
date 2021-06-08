@@ -1,15 +1,14 @@
 <template>
-  <VModel 
-    :value="value"
-  />
+  <avatar 
+    type="square"
+    size="200"
+  />  
 </template>
 
 <script lang="ts" setup>
 
-import { ref } from "@vue/reactivity";
-import VModel from "./components/VModel/index";
+import avatar from "./components/avatar/index"
 
-const value = ref("");
 
 </script>
 

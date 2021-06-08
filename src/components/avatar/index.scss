@@ -1,0 +1,31 @@
+.avatar{
+  width: 120px;
+  height: 120px;
+
+  &--not{
+    background-color:#deedf0;
+  }
+
+  &--circle{
+    @extend .avatar;
+    border-radius: 50%;
+  }
+
+  &--square{
+    @extend .avatar
+  }
+
+  &--default{
+    @extend .avatar;
+  }
+
+  &--small{
+    width:80px;
+    height:80px;
+  }
+
+  &--large{
+    width: 160px;
+    height: 160px;
+  }
+}
