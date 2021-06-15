@@ -1,8 +1,9 @@
 <template>
+  <Rtc />
 </template>
 
 <script lang="ts" setup>
-import Editor from "./components/Editor/index"
+import Rtc from "./components/Rtc/index.vue"
 
 
 </script>
@@ -12,10 +13,10 @@ import Editor from "./components/Editor/index"
     margin:0;
     padding:0;
     min-width: 100vw;
-    min-height: 300vh;
-    display:flex;
+    min-height: 100vh;
+    /* display:flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     background-color: aquamarine;
     background-image: linear-gradient(to right top, #ffcc00 50%, #eee 50%);
     background-size: 100% calc(100% - 100vh + 5px);
