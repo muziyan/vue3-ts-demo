@@ -1,26 +1,35 @@
 <template>
-  <Loading 
-    type="full"
-    :loading="loading"
-    animation-color="#000"
-    loading-text="加载中"
-  />
 </template>
 
 <script lang="ts" setup>
-import { ref } from "@vue/reactivity";
-import Loading from "./components/Loading/index"
-const flag = ref(true);
-const loading = ref(true)
+import Editor from "./components/Editor/index"
 
-setTimeout(()=>{
-  loading.value = false;
-},3000);
 
 </script>
 
 <style>
   body{
+    margin:0;
+    padding:0;
+    min-width: 100vw;
+    min-height: 300vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
     background-color: aquamarine;
+    background-image: linear-gradient(to right top, #ffcc00 50%, #eee 50%);
+    background-size: 100% calc(100% - 100vh + 5px);
+    background-repeat: no-repeat;
+  }
+
+  body::after{
+    content: "";
+    position: fixed;
+    top: 5px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background:aquamarine;
+    z-index: -1;
   }
 </style>
