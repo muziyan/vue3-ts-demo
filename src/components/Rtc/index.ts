@@ -1,22 +1,27 @@
+import { MaybeRef, MaybeRefObject } from './../../utils/module.d';
 import { unref } from "vue";
 
+type RTCVideo = MaybeRef<HTMLMediaElementEventMap>
 
-export const startCapture = async (displayMediaOption,rtcVideo) =>{ 
 
+// 开始屏幕共享
+export const startCapture = async (displayMediaOption:MaybeRefObject,rtcVideo:RTCVideo) =>{ 
+
+  // 建构 ref 数据
   displayMediaOption = unref(displayMediaOption)
   rtcVideo = unref(rtcVideo)
 
   let captureStream = null;
 
   let mediaRecorder = null;
-  const mediaRecorderChunks = [];
+  const mediaRecorderChunks:Array<any> = [];
   const mediaRecorderOptions = {
     mimeType: "video/webm; codecs=vp9"
   }
 
   try {
 
-    captureStream = await navigator.mediaDevices.getDisplayMedia(displayMediaOption)
+    captureStream = await navigator.mediaDevices?.getDisplayMedia(displayMediaOption)
     rtcVideo.srcObject = captureStream;
     
     mediaRecorder = new MediaRecorder(captureStream,mediaRecorderOptions);
@@ -24,14 +29,13 @@ export const startCapture = async (displayMediaOption,rtcVideo) =>{
     mediaRecorder.ondataavailable = event => {
       if(event.data.size > 0){
         mediaRecorderChunks.push(event.data)
-        console.log(event.data)
         download(mediaRecorderChunks)
       }  
     }
     mediaRecorder.start()
     
 
-    dumpOptionsInfo(rtcVideo)
+    // dumpOptionsInfo(rtcVideo)
   } catch(err){
     console.error("Error: ",err)
   }
@@ -39,18 +43,20 @@ export const startCapture = async (displayMediaOption,rtcVideo) =>{
   return mediaRecorder;
 }
 
-export const stopCapture = (rtcVideo,mediaRecorder) => {
+export const stopCapture = (rtcVideo:RTCVideo,mediaRecorder) => {
   rtcVideo = unref(rtcVideo)
   mediaRecorder = unref(mediaRecorder)
+
+
   let tracks = rtcVideo.srcObject.getTracks();
   tracks.forEach(track  => track.stop());
-
+  
   mediaRecorder.stop()
   rtcVideo.srcObject = null
 }
 
 
-const download = (chunks) => {
+const download = (chunks:Array<any>) => {
   const blob = new Blob(chunks,{
     type: "video/webm"
   })
@@ -62,16 +68,5 @@ const download = (chunks) => {
   aTag.download = "rtc-demo.webm"
   aTag.click()
   window.URL.revokeObjectURL(url)
-}
-
-const dumpOptionsInfo = (rtcVideo) => {
-  const videoTrack = rtcVideo.srcObject.getVideoTracks()[0];
-
-  console.log(videoTrack)
-
-  // console.info("Track settings:");
-  // console.info(JSON.stringify(videoTrack.getSettings(), null, 2));
-  // console.info("Track constraints:");
-  // console.info(JSON.stringify(videoTrack.getConstraints(), null, 2));
-
+  aTag.remove()
 }
