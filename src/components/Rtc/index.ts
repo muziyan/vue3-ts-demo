@@ -1,8 +1,7 @@
-import { MaybeRef, MaybeRefObject } from './../../utils/module.d';
+import type { MaybeRef, MaybeRefObject } from './../../utils/module.d';
 import { unref } from "vue";
 
-type RTCVideo = MaybeRef<HTMLMediaElementEventMap>
-
+type RTCVideo = any
 
 // 开始屏幕共享
 export const startCapture = async (displayMediaOption:MaybeRefObject,rtcVideo:RTCVideo) =>{ 
@@ -35,7 +34,6 @@ export const startCapture = async (displayMediaOption:MaybeRefObject,rtcVideo:RT
     mediaRecorder.start()
     
 
-    // dumpOptionsInfo(rtcVideo)
   } catch(err){
     console.error("Error: ",err)
   }
@@ -43,13 +41,13 @@ export const startCapture = async (displayMediaOption:MaybeRefObject,rtcVideo:RT
   return mediaRecorder;
 }
 
-export const stopCapture = (rtcVideo:RTCVideo,mediaRecorder) => {
+export const stopCapture = (rtcVideo:RTCVideo,mediaRecorder:MaybeRef<any>) => {
   rtcVideo = unref(rtcVideo)
   mediaRecorder = unref(mediaRecorder)
 
 
   let tracks = rtcVideo.srcObject.getTracks();
-  tracks.forEach(track  => track.stop());
+  tracks.forEach((track:any)  => track.stop());
   
   mediaRecorder.stop()
   rtcVideo.srcObject = null

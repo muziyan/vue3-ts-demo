@@ -1,9 +1,9 @@
 <template>
-  <Rtc />
+  <Drag />
 </template>
 
 <script lang="ts" setup>
-import Rtc from "./components/Rtc/index.vue"
+import Drag from "./components/Drag/index.vue"
 
 
 </script>
@@ -14,13 +14,13 @@ import Rtc from "./components/Rtc/index.vue"
     padding:0;
     min-width: 100vw;
     min-height: 100vh;
-    /* display:flex;
+    display:flex;
     align-items: center;
-    justify-content: center; */
-    background-color: aquamarine;
+    justify-content: center;
+    /* background-color: aquamarine;
     background-image: linear-gradient(to right top, #ffcc00 50%, #eee 50%);
     background-size: 100% calc(100% - 100vh + 5px);
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
   }
 
   body::after{
@@ -30,7 +30,7 @@ import Rtc from "./components/Rtc/index.vue"
     left: 0;
     bottom: 0;
     right: 0;
-    background:aquamarine;
+    /* background:aquamarine; */
     z-index: -1;
   }
 </style>
